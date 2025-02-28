@@ -33,24 +33,14 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Publish') {
             steps {
                 script {
                     // Publishing the application
                     bat "dotnet publish --no-restore --configuration Release --output .\\publish"
                 }
-                // Archive the publish folder as an artifact
-                archiveArtifacts artifacts: 'publish/**', fingerprint: true
             }
-        }
-        
-    }
-    
-    post {
-        always {
-            // Archive the build artifacts
-            archiveArtifacts artifacts: '**/publish/**', fingerprint: true
         }
     }
 
