@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOTNET_CLI_HOME = "C:\\Program Files\\dotnet"
-        DOCKER_IMAGE_NAME = "my-App-name" // Replace with your desired image name
+        DOCKER_IMAGE_NAME = "myappname" // Replace with your desired image name
         DOCKER_REGISTRY = "docker.io" // Replace with your Docker registry URL if needed
         DOCKER_CREDENTIALS_ID = "dockerHub" // Replace with your Jenkins credentials ID for Docker
     }
