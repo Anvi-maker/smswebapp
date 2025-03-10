@@ -54,20 +54,6 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image') {
-            steps {
-                script {
-                    // Using withCredentials to access Docker credentials
-                    withCredentials([usernamePassword(credentialsId: 'Dockerhub', passwordVariable: 'Anvi9429117674$', usernameVariable: 'jainikan')]) {
-                        // Logging in to Docker
-                        bat "docker login -u ${env.DOCKER_USERNAME} -p ${env.DOCKER_PASSWORD} ${DOCKER_REGISTRY}"
-                        
-                        // Pushing the Docker image
-                        bat "docker push ${DOCKER_IMAGE_NAME}:latest"
-                    }
-                }
-            }
-        }
     }
 
     post {
