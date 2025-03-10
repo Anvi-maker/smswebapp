@@ -61,7 +61,7 @@ pipeline {
             steps {
                 script {
                     // Using withCredentials to access Docker credentials
-                    withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, passwordVariable: DOCKER_PASSWORD, usernameVariable: DOCKER_USERNAME)]) {
+                    withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, passwordVariable: 'Anvi9429117674\$', usernameVariable: 'jainikan')]) {
                         // Logging in to Docker using --password-stdin
                         bat "echo ${env.DOCKER_PASSWORD} | docker login -u ${env.DOCKER_USERNAME} --password-stdin ${DOCKER_REGISTRY}"
                         echo 'Login Completed'
