@@ -56,15 +56,16 @@ pipeline {
             }
         }
         
-    
-        stage('Login to Docker Hub') {
+        stage('Push Docker Image') {
             steps {
                 script {
                     // Using withCredentials to access Docker credentials
-                    withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, passwordVariable: DOCKER_PASSWORD, usernameVariable: DOCKER_USERNAME)]) {
-                        // Logging in to Docker using --password-stdin
-                        sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
-                        echo 'Login Completed'
+                    withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, passwordVariable: 'Anvi9429117674$', usernameVariable: 'jainikan')]) {
+                        // Logging in to Docker
+                        bat "docker login -u ${env.DOCKER_USERNAME} -p ${env.DOCKER_PASSWORD} ${DOCKER_REGISTRY}"
+                        
+                        // Pushing the Docker image
+                        bat "docker push ${DOCKER_IMAGE_NAME}:latest"
                     }
                 }
             }
