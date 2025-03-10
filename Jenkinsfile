@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOTNET_CLI_HOME = "C:\\Program Files\\dotnet"
         DOCKER_IMAGE_NAME = "myapp" // Replace with your desired image name
-        DOCKER_CREDENTIALS = credentials('Dockerhub') // Replace with your credentials ID
+        DOCKER_CREDENTIALS = credentials('caeb5e7c-93ea-486b-acba-8d0742f50c6c') // Replace with your credentials ID
         // DOCKER_REGISTRY = "docker.io" // Replace with your Docker registry URL if needed
         // DOCKER_CREDENTIALS_ID = "Dockerhub" // Replace with your Jenkins credentials ID for Docker
         // DOCKER_USERNAME = "jainikan"
@@ -61,7 +61,7 @@ pipeline {
         stage('Login to Docker Hub') {
             steps {
                  script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'Dockerhub') { // Replace with your credentials ID
+                    docker.withRegistry('https://registry.hub.docker.com', 'caeb5e7c-93ea-486b-acba-8d0742f50c6c') { // Replace with your credentials ID
                         def app = docker.build("jainikan/myapp")
                         app.push("latest")
                     }
