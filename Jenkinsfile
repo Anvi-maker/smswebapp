@@ -1,13 +1,16 @@
 pipeline {
-    agent any
+     agent {
+        docker { image 'node:18.18.0-alpine3.18' }
+    }
 
     environment {
         DOTNET_CLI_HOME = "C:\\Program Files\\dotnet"
         DOCKER_IMAGE_NAME = "myapp" // Replace with your desired image name
-        DOCKER_REGISTRY = "docker.io" // Replace with your Docker registry URL if needed
-        DOCKER_CREDENTIALS_ID = "Dockerhub" // Replace with your Jenkins credentials ID for Docker
-        DOCKER_USERNAME = "jainikan"
-        DOCKER_PASSWORD = "Anvi9429117674\$"
+        DOCKER_CREDENTIALS = credentials('Dockerhub') // Replace with your credentials ID
+        // DOCKER_REGISTRY = "docker.io" // Replace with your Docker registry URL if needed
+        // DOCKER_CREDENTIALS_ID = "Dockerhub" // Replace with your Jenkins credentials ID for Docker
+        // DOCKER_USERNAME = "jainikan"
+        // DOCKER_PASSWORD = "Anvi9429117674\$"
     }
 
     stages {
@@ -59,12 +62,10 @@ pipeline {
      
         stage('Login to Docker Hub') {
             steps {
-                script {
-                    // Using withCredentials to access Docker credentials
-                    withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, passwordVariable: 'Anvi9429117674\$', usernameVariable: 'jainikan')]) {
-                        // Logging in to Docker using --password-stdin
-                        bat "echo ${env.DOCKER_PASSWORD} | docker login -u ${env.DOCKER_USERNAME} --password-stdin ${DOCKER_REGISTRY}"
-                        echo 'Login Completed'
+                 script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'Dockerhub') { // Replace with your credentials ID
+                        def app = docker.build("jainikan/myapp")
+                        app.push("latest")
                     }
                 }
             }
