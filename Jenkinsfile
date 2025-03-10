@@ -62,7 +62,7 @@ pipeline {
             steps {
                  script {
                     docker.withRegistry('https://registry.hub.docker.com', 'caeb5e7c-93ea-486b-acba-8d0742f50c6c') { // Replace with your credentials ID
-                        def app = docker.build("jainikan/myapp")
+                        def app = docker.build("jainikan/myapp", "-f smswebapp/Dockerfile")
                         app.push("latest")
                     }
                 }
