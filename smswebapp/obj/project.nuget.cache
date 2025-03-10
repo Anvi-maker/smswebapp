@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "U3uMwvRUOfwY2s8ajKUlGw/MSlob5NcWWXk2OyOCZmqy5ysiZWjikyZtU+IOTRC8GQ5mw2IrgSRJtPktFZz+hw==",
+  "dgSpecHash": "dZI0Vh0i8TfhzmTmy8gXddN7lwt5s/eRPIL7YFe3PrfE38AwmDmAe3x9GhjPJoGpulYBtBiWM49O6dpe8+8sYA==",
   "success": true,
   "projectFilePath": "D:\\smswebapp-main\\smswebapp-main\\smswebapp\\smswebapp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.2\\microsoft.visualstudio.azure.containers.tools.targets.1.17.2.nupkg.sha512"
+  ],
   "logs": []
 }
