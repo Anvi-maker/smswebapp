@@ -49,7 +49,7 @@ pipeline {
             steps {
                 script {
                     // Building the Docker image
-                    bat "docker build -t ${DOCKER_IMAGE_NAME} ."
+                     bat "docker build -t ${DOCKER_IMAGE_NAME} -f smswebapp/Dockerfile ."
                 }
             }
         }
