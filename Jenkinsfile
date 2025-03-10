@@ -1,7 +1,5 @@
 pipeline {
-     agent {
-        docker { image 'node:18.18.0-alpine3.18' }
-    }
+     agent any
 
     environment {
         DOTNET_CLI_HOME = "C:\\Program Files\\dotnet"
