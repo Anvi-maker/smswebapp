@@ -3,9 +3,9 @@ pipeline {
 
     environment {
         DOTNET_CLI_HOME = "C:\\Program Files\\dotnet"
-        DOCKER_IMAGE_NAME = "your-docker-image-name" // Replace with your desired image name
-        DOCKER_REGISTRY = "your-docker-registry" // Replace with your Docker registry URL if needed
-        DOCKER_CREDENTIALS_ID = "your-docker-credentials-id" // Replace with your Jenkins credentials ID for Docker
+        DOCKER_IMAGE_NAME = "my-App-name" // Replace with your desired image name
+        DOCKER_REGISTRY = "docker.io" // Replace with your Docker registry URL if needed
+        DOCKER_CREDENTIALS_ID = "dockerHub" // Replace with your Jenkins credentials ID for Docker
     }
 
     stages {
@@ -57,13 +57,14 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    // Logging in to Docker registry
-                    withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                        bat "echo %DOCKER_PASSWORD% | docker login ${DOCKER_REGISTRY} -u %DOCKER_USERNAME% --password-stdin"
+                    // Using withCredentials to access Docker credentials
+                    withCredentials([usernamePassword(credentialsId: 'Dockerhub', passwordVariable: 'Anvi9429117674$', usernameVariable: 'jainikan')]) {
+                        // Logging in to Docker
+                        bat "docker login -u ${env.DOCKER_USERNAME} -p ${env.DOCKER_PASSWORD} ${DOCKER_REGISTRY}"
+                        
+                        // Pushing the Docker image
+                        bat "docker push ${DOCKER_IMAGE_NAME}:latest"
                     }
-
-                    // Pushing the Docker image to the registry
-                    bat "docker push ${DOCKER_IMAGE_NAME}"
                 }
             }
         }
