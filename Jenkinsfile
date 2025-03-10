@@ -7,7 +7,7 @@ pipeline {
         DOCKER_REGISTRY = "docker.io" // Replace with your Docker registry URL if needed
         DOCKER_CREDENTIALS_ID = "dockerHub" // Replace with your Jenkins credentials ID for Docker
         DOCKER_USERNAME = "jainikan"
-        DOCKER_PASSWORD = "Anvi9429117674$"
+        DOCKER_PASSWORD = "Anvi9429117674\$"
     }
 
     stages {
